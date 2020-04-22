@@ -26,6 +26,15 @@ if platform == 'rhel' and node['rhel']['epel'].downcase == "true"
   node.default['airflow']['dependencies'][platform][:default] << epel_release
 end
 
+if platform == 'amazon' and node['rhel']['epel'].downcase == "true"
+  bash "install_epel_amazon" do 
+    user "root"
+    code <<-EOH
+      amazon-linux-extras install epel
+    EOH
+  end
+end
+
 # Default dependencies to install
 dependencies_to_install = []
 node['airflow']['dependencies'][platform][:default].each do |dependency|

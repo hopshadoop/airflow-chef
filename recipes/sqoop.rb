@@ -132,7 +132,7 @@ service service_name do
 end
 
 case node['platform_family']
-when "rhel"
+when "rhel", "amazon"
   systemd_script = "/usr/lib/systemd/system/#{service_name}.service"
 else
   systemd_script = "/lib/systemd/system/#{service_name}.service"
