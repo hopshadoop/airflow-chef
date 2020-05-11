@@ -1,16 +1,17 @@
-dependencies: 
+dependencies:
   - recipe: hops_airflow::install
-    global:  
+    global:
       - hops::install
   - recipe: hops_airflow::default
-    global:  
+    global:
       - ndb::mysqld
+      - ndb::mysqld_tls
   - recipe: hops_airflow::kerberos
-    global:  
+    global:
       - hops_airflow::default
   - recipe: hops_airflow::worker
-    global:  
+    global:
       - hops_airflow::default
   - recipe: hops_airflow::sqoop
-    global:  
+    global:
       - kagent::default
